@@ -266,12 +266,6 @@ const GameInterface: React.FC<{ onViewAnalysis: () => void }> = ({ onViewAnalysi
     return SPEAKER_COLORS[speaker as keyof typeof SPEAKER_COLORS] || 'text-gray-400';
   };
 
-  const bgStyle = currentScene.bgImage ? {
-    backgroundImage: `url(${currentScene.bgImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  } : {};
-
   const availableChoices = currentScene.choices.filter(choice => {
     if (choice.hidden && !state.flags[choice.id]) return false;
     if (!choice.requiredStats) return true;
