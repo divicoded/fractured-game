@@ -198,7 +198,7 @@ export const AnalysisGraph: React.FC<{ onRestart: () => void }> = ({ onRestart }
                 <div style={{ height: nodes.length * 180 + 400 }} className="absolute top-0 left-0 w-full pointer-events-none" />
 
                 {/* Interactive Nodes */}
-                {nodes.map((node, i) => (
+                {nodes.map((node) => (
                     <div
                         key={node.id}
                         className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20"
