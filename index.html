@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRACTURED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Rajdhani', 'sans-serif'],
+              mono: ['"Share Tech Mono"', 'monospace'],
+              serif: ['"Cormorant Garamond"', 'serif'],
+            },
+            colors: {
+              'neon-cyan': '#00f3ff',
+              'neon-pink': '#ff00ff',
+              'neon-amber': '#ffaa00',
+              'neon-red': '#ff3333',
+              'neon-purple': '#bc13fe',
+              'dark-bg': '#05050a',
+              'glass': 'rgba(10, 10, 20, 0.7)',
+            },
+            animation: {
+              'glitch-1': 'glitch-anim-1 2.5s infinite linear alternate-reverse',
+              'glitch-2': 'glitch-anim-2 3s infinite linear alternate-reverse',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'scan-vertical': 'scan-vertical 3s linear infinite',
+              'char-shift': 'char-shift 0.4s ease-in-out infinite alternate',
+              'pan-grid': 'pan-grid 20s linear infinite',
+              'crt-sweep': 'crt-sweep 0.8s ease-in-out forwards',
+              'invert-flash': 'invert-flash 0.2s steps(2) forwards',
+              'text-distort': 'text-distort 0.4s ease-out forwards',
+              'pulse-border-red': 'pulse-border-red 2s infinite',
+              'distort-ripple': 'distort-ripple 0.4s ease-in-out both',
+            },
+            keyframes: {
+              'glitch-anim-1': {
+                '0%': { clip: 'rect(20px, 9999px, 15px, 0)' },
+                '20%': { clip: 'rect(50px, 9999px, 80px, 0)' },
+                '40%': { clip: 'rect(20px, 9999px, 100px, 0)' },
+                '60%': { clip: 'rect(80px, 9999px, 5px, 0)' },
+                '80%': { clip: 'rect(10px, 9999px, 60px, 0)' },
+                '100%': { clip: 'rect(40px, 9999px, 30px, 0)' },
+              },
+              'glitch-anim-2': {
+                '0%': { clip: 'rect(10px, 9999px, 90px, 0)' },
+                '20%': { clip: 'rect(30px, 9999px, 10px, 0)' },
+                '40%': { clip: 'rect(90px, 9999px, 20px, 0)' },
+                '60%': { clip: 'rect(15px, 9999px, 80px, 0)' },
+                '80%': { clip: 'rect(60px, 9999px, 40px, 0)' },
+                '100%': { clip: 'rect(5px, 9999px, 50px, 0)' },
+              },
+              'shake': {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              },
+              'scan-vertical': {
+                '0%': { top: '-10%', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { top: '110%', opacity: '0' },
+              },
+              'char-shift': {
+                '0%': { transform: 'translateY(0) skewX(0)' },
+                '25%': { transform: 'translateY(-1px) skewX(-2deg)' },
+                '50%': { transform: 'translateY(0) skewX(0)' },
+                '75%': { transform: 'translateY(1px) skewX(2deg)' },
+                '100%': { transform: 'translateY(0) skewX(0)' }
+              },
+              'pan-grid': {
+                '0%': { backgroundPosition: '0px 0px' },
+                '100%': { backgroundPosition: '40px 40px' }
+              },
+              'crt-sweep': {
+                '0%': { transform: 'translateY(-100%)', opacity: '0.8' },
+                '100%': { transform: 'translateY(100%)', opacity: '0' }
+              },
+              'invert-flash': {
+                '0%': { filter: 'invert(0)' },
+                '50%': { filter: 'invert(1)' },
+                '100%': { filter: 'invert(0)' }
+              },
+              'text-distort': {
+                '0%': { transform: 'translate(0) skew(0)', opacity: '1', filter: 'blur(0)' },
+                '20%': { transform: 'translate(-2px, 1px) skew(-20deg)', opacity: '0.8', filter: 'blur(1px)', color: '#ff3333' },
+                '40%': { transform: 'translate(2px, -1px) skew(20deg)', opacity: '0.9', filter: 'blur(0px)', color: '#00f3ff' },
+                '60%': { transform: 'translate(-1px, 0) skew(-10deg)', opacity: '1', filter: 'blur(0.5px)' },
+                '100%': { transform: 'translate(0) skew(0)', opacity: '1', filter: 'blur(0)' },
+              },
+              'pulse-border-red': {
+                '0%, 100%': { boxShadow: '0 0 0 0 rgba(255, 51, 51, 0.4), inset 0 0 10px rgba(255, 51, 51, 0.2)' },
+                '50%': { boxShadow: '0 0 15px rgba(255, 51, 51, 0.6), inset 0 0 20px rgba(255, 51, 51, 0.4)' },
+              },
+              'distort-ripple': {
+                 '0%': { transform: 'scale(1)', filter: 'blur(0) hue-rotate(0deg)' },
+                 '25%': { transform: 'scale(1.02) skewX(5deg)', filter: 'blur(2px) hue-rotate(45deg)' },
+                 '50%': { transform: 'scale(0.98) skewX(-5deg)', filter: 'blur(1px) hue-rotate(90deg) contrast(1.5)' },
+                 '75%': { transform: 'scale(1.01) skewX(2deg)', filter: 'blur(0.5px) hue-rotate(45deg)' },
+                 '100%': { transform: 'scale(1)', filter: 'blur(0) hue-rotate(0deg)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="scanline"></div>
+    <div class="noise"></div>
+
+    <svg style="display: none;">
+      <defs>
+        <filter id="chromatic-aberration">
+          <feColorMatrix type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="red" />
+          <feOffset in="red" dx="4" dy="0" result="red_offset" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="green" />
+          <feOffset in="green" dx="-2" dy="0" result="green_offset" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="blue" />
+          <feOffset in="blue" dx="0" dy="2" result="blue_offset" />
+          <feBlend mode="screen" in="red_offset" in2="green_offset" result="rg" />
+          <feBlend mode="screen" in="rg" in2="blue_offset" />
+        </filter>
+        <filter id="displacement">
+          <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence" />
+          <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
