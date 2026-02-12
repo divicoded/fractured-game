@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
-import { calculateGlitchIntensity, corruptText, getRandomScaryWord } from '../services/glitchLogic';
+import { calculateGlitchIntensity, corruptText } from '../services/glitchLogic';
 import type { Choice } from '../types';
 
 interface GlitchButtonProps {
@@ -85,9 +85,9 @@ export const GlitchButton: React.FC<GlitchButtonProps> = ({ choice, onClick }) =
             if (intervalRef.current) clearInterval(intervalRef.current);
             
             intervalRef.current = window.setInterval(() => {
-                setDisplayText(prev => 
+                setDisplayText(() => 
                     originalText.split("")
-                    .map((char, index) => {
+                    .map((_, index) => {
                         if (index < iteration) return originalText[index];
                         return alphabet[Math.floor(Math.random() * alphabet.length)];
                     })
